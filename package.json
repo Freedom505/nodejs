@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec babel-node src/server.js",
-    "code": "nodemon --exec babel-node code.js"
+    "code": "nodemon --exec babel-node challenge.js"
   },
   "repository": {
     "type": "git",
