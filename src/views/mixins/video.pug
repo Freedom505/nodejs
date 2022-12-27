@@ -1,0 +1,13 @@
+mixin video(video)
+    div
+        h2 
+            a(href=`/video/${video.id}`) #{video.title}  
+
+            ul
+                li rating: #{video.rating}/5
+                li comments: #{video.comments}
+                li views: #{video.views}
+                li length: #{video.Length}
+                li createAt: #{video.createAt}
+                li Genre: #{video.genre}
+                li id: #{video.id}

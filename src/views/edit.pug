@@ -1,0 +1,8 @@
+extends base.pug
+
+block content 
+    h4 Edit your video
+    form(method="POST" )
+        input(name="title " placeholder=`Please input video title`,value=video.title,required)
+        input(value="save",type="submit")
+

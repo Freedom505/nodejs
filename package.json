@@ -4,8 +4,7 @@
   "description": "fitst backend",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node src/server.js",
-    "code": "nodemon --exec babel-node challenge.js"
+    "dev": "nodemon --exec babel-node src/server.js"
   },
   "repository": {
     "type": "git",
