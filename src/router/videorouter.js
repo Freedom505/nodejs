@@ -3,15 +3,15 @@ import {
   watch,
   getEdit,
   postEdit,
-  upload,
+  getUpload,
+  postUpload,
   videoDelete,
   comments,
   commentsDelete,
 } from "../controller/videocontroller";
 
 const videoRouter = express.Router();
-
-videoRouter.get("/upload", upload);
+videoRouter.route("/upload").get(getUpload).post(postUpload);
 videoRouter.get("/:id", watch);
 videoRouter.route("/:id/edit").get(getEdit).post(postEdit); //두개를 한번에
 videoRouter.get("/:id/delete", videoDelete);
