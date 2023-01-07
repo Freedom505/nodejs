@@ -1,11 +1,7 @@
 extends base.pug
 include mixins/video
 
-block header 
-    nav 
-        ul 
-            li 
-                a(href="/video/upload") upload video
+
 
 
 block content
@@ -13,4 +9,4 @@ block content
         +video(video)
     else 
         h3 Sorry Nothing is here
-    h2 Welcome!here is a trending video!
+   
