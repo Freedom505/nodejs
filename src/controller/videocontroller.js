@@ -7,7 +7,7 @@ export const search = async (req, res) => {
   //그렇기에 let으로 빈 어레이를 만들어 준다
   if (keyword) {
     videos = await Video.find({
-      // const 붙이지 말자
+      // const 붙이지 말자 밖에 있는 videos를 가져온거임
       title: {
         $regex: new RegExp(keyword, "i"), // regular expression 정규식을 사용할수 있게 해주는 코드다.i는 대소문자 구분 안 한다는 소리.정규식을 좀 더 공부해보자
       },
@@ -20,7 +20,9 @@ export const getEdit = async (req, res) => {
   const { id } = req.params;
   const video = await Video.findById(id);
   if (!video) {
-    return res.render("404", { pageTitle: "해당 동영상을 재생할수 없습니다." }); // 리턴 하는게 중요함!
+    return res
+      .status(404)
+      .render("404", { pageTitle: "해당 동영상을 재생할수 없습니다." }); // 리턴 하는게 중요함!
   }
   res.render("edit", { pageTitle: `Editing: ${video.title}`, video: video });
 };
@@ -30,7 +32,9 @@ export const postEdit = async (req, res) => {
   //exists는 filter를 받는다.
   const video = await Video.exists({ _id: id }); // 해당 동영상이 존재하는지 확인하는 함수. _id는 오브젝트 내의 id이다.그게 js의 id와 일치하는지 확인하는것.boolean 값을 반환함.
   if (!video) {
-    return res.render("404", { pageTitle: "해당 동영상을 재생할수 없습니다." });
+    return res
+      .status(404)
+      .render("404", { pageTitle: "해당 동영상을 재생할수 없습니다." });
   }
   await Video.findByIdAndUpdate(id, {
     title,
@@ -52,7 +56,9 @@ export const postUpload = async (req, res) => {
     res.redirect("/");
   } catch (error) {
     console.log(error);
-    res.render("upload", { pageTitle: "upload", errorMessage: error._message });
+    return res
+      .status(400)
+      .render("upload", { pageTitle: "upload", errorMessage: error._message });
   }
 };
 export const videoDelete = async (req, res) => {
@@ -67,7 +73,9 @@ export const watch = async (req, res) => {
   const video = await Video.findById(id); // 아이디로 해당하는 영상을 찾아준다.await 꼭 달아야 됨.
   if (!video) {
     // video===null도 가능
-    return res.render("404", { pageTitle: "해당 동영상을 재생할수 없습니다." });
+    return res
+      .status(404)
+      .render("404", { pageTitle: "해당 동영상을 재생할수 없습니다." });
   }
   res.render("watch", { pageTitle: video.title, video });
 };

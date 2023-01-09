@@ -1,0 +1,12 @@
+extends base
+
+block content 
+    if errorMessage
+        span=errorMessage
+    form(method="post")
+        input(name="username" placeholder="username" type="text" required)
+        input(name="password" placeholder="Password" type="password" required)
+        input(type="submit" value="Join")
+    hr
+    span 계정이 없으신가요? 
+    a(href="/join") Join &rarr;

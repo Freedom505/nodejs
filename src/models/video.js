@@ -17,5 +17,5 @@ videoSchema.static("formatHashtags", function (hashtags) {
     .map((word) => (word.startsWith("#") ? word : `#${word}`));
 });
 
-const video = mongoose.model("video", videoSchema); // 몽구스 모델을 설정
-export default video; // 모델 밖에 보내줌
+const Video = mongoose.model("Video", videoSchema); // 몽구스 모델을 설정
+export default Video; // 모델 밖에 보내줌
